@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistive Navigation Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-eye-slash"></i> Assistive Navigation</h1>
+            <div class="connection-status" id="connectionStatus">
+                <i class="fas fa-bluetooth-b"></i>
+                <span id="statusText">Disconnected</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Connection Section -->
+            <section class="card">
+                <h2><i class="fas fa-link"></i> Device Connection</h2>
+                <button id="connectBtn" class="btn btn-primary">
+                    <i class="fas fa-bluetooth"></i>
+                    Connect Device
+                </button>
+                <div id="deviceInfo" class="device-info hidden">
+                    <p><strong>Device:</strong> <span id="deviceName">-</span></p>
+                    <p><strong>Status:</strong> <span id="deviceStatus">-</span></p>
+                </div>
+            </section>
+
+            <!-- System Control -->
+            <section class="card">
+                <h2><i class="fas fa-power-off"></i> System Control</h2>
+                <div class="control-group">
+                    <button id="enableBtn" class="btn btn-success">
+                        <i class="fas fa-play"></i>
+                        Enable System
+                    </button>
+                    <button id="disableBtn" class="btn btn-danger">
+                        <i class="fas fa-stop"></i>
+                        Disable System
+                    </button>
+                </div>
+                <div class="status-indicator">
+                    <span>System Status:</span>
+                    <span id="systemStatus" class="status-badge status-disabled">Disabled</span>
+                </div>
+            </section>
+
+            <!-- Mode Selection -->
+            <section class="card">
+                <h2><i class="fas fa-cog"></i> Feedback Mode</h2>
+                <div class="mode-buttons">
+                    <button class="mode-btn" data-mode="1">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Buzzer Only</span>
+                    </button>
+                    <button class="mode-btn" data-mode="2">
+                        <i class="fas fa-hand-paper"></i>
+                        <span>Tap Only</span>
+                    </button>
+                    <button class="mode-btn active" data-mode="3">
+                        <i class="fas fa-handshake"></i>
+                        <span>Both</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Servo Speed Control -->
+            <section class="card">
+                <h2><i class="fas fa-tachometer-alt"></i> Tap Speed</h2>
+                <div class="slider-container">
+                    <label for="speedSlider">Tap Frequency:</label>
+                    <input type="range" id="speedSlider" min="0" max="100" value="50" class="slider">
+                    <div class="slider-labels">
+                        <span>Slow</span>
+                        <span id="speedValue">50%</span>
+                        <span>Fast</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detection Range -->
+            <section class="card">
+                <h2><i class="fas fa-ruler"></i> Detection Range</h2>
+                <div class="slider-container">
+                    <label for="rangeSlider">Detection Distance:</label>
+                    <input type="range" id="rangeSlider" min="10" max="200" value="50" class="slider">
+                    <div class="slider-labels">
+                        <span>10cm</span>
+                        <span id="rangeValue">50cm</span>
+                        <span>200cm</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Battery Status -->
+            <section class="card">
+                <h2><i class="fas fa-battery-half"></i> Battery Status</h2>
+                <div class="battery-container">
+                    <div class="battery-indicator">
+                        <div id="batteryLevel" class="battery-fill" style="width: 100%"></div>
+                        <i id="batteryIcon" class="fas fa-battery-full battery-icon"></i>
+                    </div>
+                    <div class="battery-text">
+                        <span id="batteryStatus">Good</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Voice Controls -->
+            <section class="card">
+                <h2><i class="fas fa-microphone"></i> Voice Control</h2>
+                <button id="voiceBtn" class="btn btn-secondary">
+                    <i class="fas fa-microphone"></i>
+                    Start Voice Control
+                </button>
+                <div id="voiceStatus" class="voice-status hidden">
+                    <p>Say: "Enable", "Disable", "Mode Buzzer", "Mode Tap", "Mode Both"</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Status Messages -->
+        <div id="messages" class="messages"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
